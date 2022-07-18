@@ -6,10 +6,7 @@ import "./Login.css";
 function Login() {
     const navigate = useNavigate();
 
-    const navigateToForm = () => {
-      
-      navigate('/Form');
-    };
+ 
   
     const initialValues = {  email: "", password: ""};
     const [formValues, setFormValues] = useState(initialValues);
@@ -25,6 +22,10 @@ function Login() {
 
         localStorage.setItem('signup Details', JSON.stringify(formValues))
     
+    };
+       const navigateToForm = () => {
+      
+      navigate('/Form');
     };
     const validate = (values) => {
         const errors = {};
