@@ -1,8 +1,16 @@
 import React, {  useState } from 'react'
+import {useNavigate} from 'react-router-dom';
 import Home from './Home'
 import "./Login.css";
 
 function Login() {
+    const navigate = useNavigate();
+
+    const navigateToForm = () => {
+      
+      navigate('/Form');
+    };
+  
     const initialValues = {  email: "", password: ""};
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
@@ -15,7 +23,7 @@ function Login() {
         e.preventDefault();
         setFormErrors(validate(formValues));
 
-        localStorage.getItem('signup Details', JSON.stringify(formValues))
+        localStorage.setItem('signup Details', JSON.stringify(formValues))
     
     };
     const validate = (values) => {
@@ -68,7 +76,7 @@ function Login() {
                 
                     <p>{formErrors.password}</p>
                     
-                    <button type="submit">LOGIN</button>
+                    <button type="submit" onClick={navigateToForm}>LOGIN</button>
                     </div>
                 
             </form>
