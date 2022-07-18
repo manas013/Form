@@ -1,37 +1,18 @@
-body {
-    background: rgb(2, 0, 36);
-    background: radial-gradient(
-      circle,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(30, 54, 59, 1) 0%,
-      rgba(93, 93, 116, 1) 100%
-    );
-  }
-  
-  .container {
-    display: flex ;
-    flex-direction: column;
-    justify-content: center;
+.active{
+    color: brown;
+}
+ .header{
+    height: 60px;
+    display: flex;
     align-items: center;
-    height: 100vh;
-    max-width: 500px;
+    position: sticky;
     width: 100%;
-    margin: auto;
-  }
-  .BOX {
-    width: 205px;
-    border: 1px solid #dfdfdf;
-    align-items: center;
+    top: 0;
+    z-index: 100;
+    background-color: rgb(129, 153, 153);
+ }
+ .header a{
     padding: 20px;
-    border-radius: 5px;
-    background: #fff;
-    display:  inline-block;
-    
-  }
-
-  button {
-    background: #0563b4;
-  }
-  p {
-    color: red;
-  }
+    margin: 35px;
+ } 
+ 

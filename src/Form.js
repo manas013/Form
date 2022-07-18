@@ -1,5 +1,7 @@
 import React from 'react'
+import "./Form.css";
 import { useState, useEffect } from "react";
+import Home from './Home';
 
 function Form() {
     const initialValues = { username: "", email: "", password: "", PhoneNumber: "" };
@@ -15,10 +17,8 @@ function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-       
-    
-
         setIsSubmit(true);
+        localStorage.setItem('signup Details', JSON.stringify(formValues))
     
     };
 
@@ -32,42 +32,45 @@ function Form() {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.username) {
-            errors.username = "Username is required!";
+            errors.username = "* Name is required!";
         }
         if (!values.email) {
-            errors.email = "Email is required!";
+            errors.email = "* Email is required!";
         } else if (!regex.test(values.email)) {
-            errors.email = "This is not a valid email format!";
+            errors.email = " * This is not a valid email format!";
         }
         if (!values.password) {
-            errors.password = "Password is required";
+            errors.password = " * Password is required";
         } else if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
+            errors.password = " * Password must be more than 4 characters";
         } else if (values.password.length > 10) {
-            errors.password = "Password cannot exceed more than 10 characters";
+            errors.password = " * Password cannot exceed more than 10 characters";
         }
 
         if (!values.PhoneNumber) {
-            errors.PhoneNumber = 'number is require';
+            errors.PhoneNumber = ' * number is require';
         } else if (values.PhoneNumber.length < 10) {
-            errors.PhoneNumber = 'must be 10 Number'
+            errors.PhoneNumber = ' * must be 10 Number'
         }
 
         return errors;
     };
     return (
+        <>
+        <Home/>
         <div className="container">
+        
 
             <form onSubmit={handleSubmit} className='BOX'>
                 <h1>Sign up</h1>
                 <div className="ui divider"></div>
                 <div className="ui form">
                     <div className="field">
-                        <label>Username</label>
+                        <label>Name</label>
                         <input
                             type="text"
                             name="username"
-                            placeholder="Username"
+                            placeholder="Name"
                             value={formValues.username}
                             onChange={handleChange}
                         />
@@ -110,6 +113,7 @@ function Form() {
                 </div>
             </form>
         </div>
+        </>
     )
 }
 
