@@ -2,8 +2,10 @@ import React from 'react'
 import "./Form.css";
 import { useState, useEffect } from "react";
 import Home from './Home';
+import { useNavigate} from 'react-router-dom';
 
 function Form() {
+    const history = useNavigate();
     const initialValues = { username: "", email: "", password: "", PhoneNumber: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
@@ -18,7 +20,8 @@ function Form() {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
-        localStorage.setItem('signup Details', JSON.stringify(formValues))
+       localStorage.setItem('signupDetails', JSON.stringify(formValues))
+       history('/Login');
     
     };
 
@@ -57,12 +60,11 @@ function Form() {
     };
     return (
         <>
-        <Home/>
         <div className="container">
         
 
             <form onSubmit={handleSubmit} className='BOX'>
-                <h1>Sign up</h1>
+                <h1 id='k'>Sign Up</h1>
                 <div className="ui divider"></div>
                 <div className="ui form">
                     <div className="field">

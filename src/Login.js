@@ -1,16 +1,20 @@
-import React, {  useState } from 'react'
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate} from 'react-router-dom';
+
 import Home from './Home'
 import "./Login.css";
 
 function Login() {
-    const navigate = useNavigate();
+    const history = useNavigate();
 
- 
-  
-    const initialValues = {  email: "", password: ""};
+
+
+
+
+    const initialValues = { email: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [meassage, setMessage]=useState('')
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
@@ -19,42 +23,53 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        const signup = localStorage.getItem('signupDetails')
+        console.log(signup)
 
-        localStorage.setItem('signup Details', JSON.stringify(formValues))
-    
+        if (signup && signup.length) {
+            const userdata = JSON.parse(signup)
+            console.log(userdata)
+            if(userdata.email=== formValues.email && userdata.password=== formValues.password){
+
+            
+                history('/Home');
+
+            }else{
+                setMessage('*password and email not match')
+            }
+        }
+
     };
-       const navigateToForm = () => {
-      
-      navigate('/Form');
-    };
+
+
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if (!values.email) {
-            errors.email = "* Email is required!";
+            // errors.email = "* Email is required!";
         } else if (!regex.test(values.email)) {
-            errors.email = " * This is not a valid email format!";
+            // errors.email = " * This is not a valid email format!";
         }
         if (!values.password) {
             errors.password = " * Password is required";
         } else if (values.password.length < 4) {
-            errors.password = " * Password must be more than 4 characters";
+            // errors.password = " * Password must be more than 4 characters";
         } else if (values.password.length > 10) {
-            errors.password = " * Password cannot exceed more than 10 characters";
+            // errors.password = " * Password cannot exceed more than 10 characters";
         }
 
         return errors;
     };
     return (
         <>
-            <Home />
+           
 
             <div className="container">
-        
 
-            <form onSubmit={handleSubmit} className='BOX'>
-                <h2>Log up</h2>
-                <div class="inputs">
+
+                <form onSubmit={handleSubmit} className='BOX'>
+                    <h2 id='k'>Log In</h2>
+                    <div class="inputs">
                         <label>Email</label>
                         <input
                             type="text"
@@ -63,9 +78,9 @@ function Login() {
                             value={formValues.email}
                             onChange={handleChange}
                         />
-                    
-                    <p>{formErrors.email}</p>
-                    
+
+                        <p>{formErrors.email}</p>
+
                         <label>Password</label>
                         <input
                             type="password"
@@ -74,13 +89,14 @@ function Login() {
                             value={formValues.password}
                             onChange={handleChange}
                         />
-                
-                    <p>{formErrors.password}</p>
-                    
-                    <button type="submit" onClick={navigateToForm}>LOGIN</button>
+
+                        <p>{formErrors.password}</p>
+
+                        <button type="submit" >LOGIN</button>
+                        <p>{meassage}</p>
                     </div>
-                
-            </form>
+
+                </form>
             </div>
         </>
 
