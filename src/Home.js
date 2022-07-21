@@ -15,8 +15,8 @@ function Home() {
         console.log(err)
       })
   }, [])
-  return (<>
-    <div className='header'>
+  return (<div className='contain'>
+    <div>
 
       <NavLink to={"/"}></NavLink>
 
@@ -28,22 +28,63 @@ function Home() {
       {
         post.map((item, k) =>
 
-          <div key={k}>
-            <div className='heading'><p>Name:{item.name} </p> </div>
+          <div key={k} className='jadu'>
+            <div className='heading'>
+              <div className='headingName'> <h3>{item.name}</h3>
+                <h3>{item.fuel_type_usage_rate}</h3>
+              </div>
+            </div>
+            <div className='detail'>
+              <img src='https://d3vfc40r4nq6xo.cloudfront.net/partner_assets/hpwh/products-images/Pro-Prestige-ProTerra-65-gal.-30A-w--LeakGuard-PROPH65-T2-RH375-SO.png' alt='images' />
 
-            <img className='img' src='https://d3vfc40r4nq6xo.cloudfront.net/partner_assets/hpwh/products-images/Pro-Prestige-ProTerra-65-gal.-30A-w--LeakGuard-PROPH65-T2-RH375-SO.png' alt='images' />
-            
-              <p id='d'>Details:{item.detail_highlight}</p>
-           
+              <ul className='a'>
+                {/* <li>{item.detail_highlight}</li> */}
+                <li>"Increased Energy Efficiency"</li>
+                <li>"Electronic User Interface"</li>
+                <li>"Backup Electric Elements"</li>
+                <li>"Heat Pump Technology"</li>
+              </ul>
 
-            <div className='details'>
+            </div>
+            <div className='estimate'>
+
+            </div>
+
+            <div className='Price'>
+              <div>
+                <p id='k'><strong>Price -----------------</strong>{item.base_price}</p>
+                <p id='k'><strong>DeliveryCharge---------</strong>{item.delivery_charge} </p>
+                <p id='k'><strong>Est_annual_kwh_usag</strong>:{item.est_annual_kwh_usage} </p>
+                <p id='k'><strong>fuel_type_usage_rate---</strong>{item.fuel_type_usage_rate} </p>
+                <p id='k'><strong>NetCost-----------------</strong>{item.netCost} </p>
+
+              </div>
+            </div>
+
+            <div className='anualsaving'>
+              <h3><strong>Your annual savings:</strong>{item.est_annual_savings_cal}</h3>
+            </div>
+
+            <div>
+              <button id='button'>Get Install Quote</button>
+            </div>
+
+            <div className='footer'>
+              <div className='moredetails'>View More Details</div>
+            </div>
+
+
+
+
+
+            {/* <div className='details'>
               <p> Price:{item.base_price} </p>
               <p> DeliveryCharge:{item.delivery_charge} </p>
               <p> EstHighlight:{item.est_highlight} </p>
-              <p> Rate:{item.fuel_type_usage_rate} </p>
+              <p>  </p>
 
-            </div>
-            <button>Get Install Quote</button>
+            </div> */}
+            {/* <button>Get Install Quote</button> */}
 
 
 
@@ -55,13 +96,14 @@ function Home() {
         )
       }
 
+
     </div>
 
 
 
 
 
-  </>
+  </div>
   )
 }
 
