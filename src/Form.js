@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Form.css";
 import { useState, useEffect } from "react";
-import Home from './Home';
 import { useNavigate} from 'react-router-dom';
 
 function Form() {
@@ -22,6 +21,7 @@ function Form() {
         setIsSubmit(true);
        localStorage.setItem('signupDetails', JSON.stringify(formValues))
        history('/Login');
+ 
     
     };
 
@@ -111,7 +111,7 @@ function Form() {
                         />
                     </div>
                     <p>{formErrors.PhoneNumber}</p>
-                    <button className="fluid ui button blue">Submit</button>
+                    <button className="fluid ui button blue" >Submit</button>
                 </div>
             </form>
         </div>
