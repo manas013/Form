@@ -287,7 +287,7 @@ function Home() {
                 <div>
                   <p className='buttom_text'>A hybrid electric water heater uses a compressor to take heat from the surrounding air and transfers it inside the water tank. It works similarly to a refrigerator, but in reverse. The “hybrid” component means that the water heater can heat water either via the heat pump, or, when the surrounding air is too cold, it can heat the same as a conventional electric water heater. This means your water heating is as efficient as possible, and also ensures you have hot water in all environments.</p>
                   <div className='buttom_text'>
-                    <img src='https://assets.solar.com/partner_assets/hpwh/hpwh-process-tab.png' alt='heater' />
+                    <img className='img' src='https://assets.solar.com/partner_assets/hpwh/hpwh-process-tab.png' alt='heater' />
                   </div>
                   <p id='buttom_content'>All values displayed on this page are based on standard industry assumptions. Savings numbers are calculated based on present day market circumstances, but may vary due to utility adjustments to rates or policy, or due to updates to the system design. Finance payments displayed are estimates subject to credit approval and based upon current provider rates that are subject to change. Your payments and rates may be higher.
 
