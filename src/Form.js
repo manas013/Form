@@ -18,16 +18,18 @@ function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
+        
+      setIsSubmit(true);
+        
        localStorage.setItem('signupDetails', JSON.stringify(formValues))
-       history('/Login');
- 
+    //    
     
     };
 
     useEffect(() => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
+            history('/Login');
             console.log(formValues);
         }
     }, [formErrors]);
