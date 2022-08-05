@@ -18,11 +18,18 @@ function Home() {
   const [message, Setmessage] = useState('')
 
   const [alignment, setAlignment] = React.useState('No');
-
+  const [result, setResult] = React.useState([])
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
     Setmessage('Got it! We will submit to our partner your need for immediate help.')
   };
+
+  const [volume, setVolume] = useState(39);
+  const increase_volume=(event,sound)=>{
+    setVolume(sound);
+    const data = post.filter((item) => (item.volume <= sound))
+    setResult(data);
+  }
 
 
   const [post, setPost] = useState([])
@@ -30,7 +37,8 @@ function Home() {
     axios.get('https://98b389d9-3f2c-431e-92a6-4fd9a942a8ef.mock.pstmn.io/quote').then(res => {
       console.log(res.data.data.quotes.product_quotes)
       setPost(res.data.data.quotes.product_quotes)
-
+      const data = res.data.data.quotes.product_quotes.filter((item) => (item.volume <= 50))
+    setResult(data);
 
     })
       .catch(err => {
@@ -89,15 +97,17 @@ function Home() {
               <div className='scroll'>
                 <div className='slidecontainer'>
                   <Slider
-                    size="small"
-                    defaultValue={50}
-                    aria-label="Small"
-                    valueLabelDisplay="auto"
+                    // size="small"
+                    // // defaultValue={0}
+                    // aria-label="Small"
+                    // valueLabelDisplay="auto"
+                    value={volume}
+                    onChange={increase_volume}
                   />
                 </div>
                 <div className='left_slide_container'>
                   <p className='slide_text'>
-                    50 Gallons
+                    {volume} Gallons
                     <br className='slide_text' />
                     (3-5 people)
 
@@ -159,7 +169,7 @@ function Home() {
 
           <div className='item'>
             {
-              post.map((item, k) =>
+              result.map((item, k) =>
 
                 <div key={k} className='block'>
 

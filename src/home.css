@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   /* background-color: whitesmoke; */
   flex:0 0 65%;
+  width: 65%;
   
  
   
@@ -32,7 +33,7 @@
   padding: 30px 50px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  width: 96%;
+  /* width: 96%; */
 }
 .headingName{
   display: flex;
@@ -247,7 +248,7 @@
   min-width: 340px;
 } */
 .left_container{
-  width: 100%;
+  width: 30%;
     max-width: 600px;
     height: calc(100%);
     padding: 15px;
@@ -456,7 +457,7 @@
 }
 #buttom_content{
   font-family: ActualR;
-    font-size: 20px;
+    font-size: 13px;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
@@ -475,7 +476,7 @@
   flex: 0 0 100%; */
   background-color: #fff;
   font-family: ActualR;
-  font-size: 20px;
+  font-size: 13px;
   color: #666;
   padding: 20px;
 
